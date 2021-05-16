@@ -1,24 +1,3 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This is a basic API to be used in conjunction with a frontend application and is intended to eventually replace the current tracking of stats for Smashy Bet away from the Google Doc that currently exists. This is an open source project and any ideas or contributions are of course welcome. Please contact any maintainer to be added to the project. 
