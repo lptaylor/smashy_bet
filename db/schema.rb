@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_17_005743) do
+ActiveRecord::Schema.define(version: 2021_05_17_010014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,19 +27,19 @@ ActiveRecord::Schema.define(version: 2021_05_17_005743) do
   create_table "fighters", force: :cascade do |t|
     t.string "name", limit: 100
     t.string "character", limit: 100
-    t.integer "wins"
-    t.integer "losses"
-    t.integer "matches"
-    t.integer "points_bet_on"
-    t.integer "points_won"
-    t.integer "points_lost"
-    t.integer "kills"
-    t.integer "deaths"
-    t.integer "suicides"
-    t.integer "critical_failures"
-    t.integer "streak"
-    t.integer "smash_rating"
-    t.decimal "total_jail_time"
+    t.integer "wins", default: 0
+    t.integer "losses", default: 0
+    t.integer "matches", default: 0
+    t.integer "points_bet_on", default: 0
+    t.integer "points_won", default: 0
+    t.integer "points_lost", default: 0
+    t.integer "kills", default: 0
+    t.integer "deaths", default: 0
+    t.integer "suicides", default: 0
+    t.integer "critical_failures", default: 0
+    t.integer "streak", default: 0
+    t.integer "smash_rating", default: 0
+    t.decimal "total_jail_time", default: "0.0"
     t.string "tier", limit: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -108,15 +108,25 @@ ActiveRecord::Schema.define(version: 2021_05_17_005743) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "spirits", force: :cascade do |t|
+    t.string "spirit_name"
+    t.integer "fighter_id"
+    t.datetime "date_attached"
+    t.integer "match_number_attached"
+    t.string "power_description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "team_name", limit: 100
-    t.integer "wins"
-    t.integer "losses"
-    t.integer "kills"
-    t.integer "deaths"
-    t.integer "suicides"
-    t.integer "pts_won"
-    t.integer "pts_lost"
+    t.integer "wins", default: 0
+    t.integer "losses", default: 0
+    t.integer "kills", default: 0
+    t.integer "deaths", default: 0
+    t.integer "suicides", default: 0
+    t.integer "pts_won", default: 0
+    t.integer "pts_lost", default: 0
     t.string "tier", limit: 1
     t.integer "member_fighter_ids", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
