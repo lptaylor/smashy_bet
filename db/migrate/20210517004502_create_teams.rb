@@ -10,7 +10,7 @@ class CreateTeams < ActiveRecord::Migration[6.1]
       t.integer :pts_won, default: 0
       t.integer :pts_lost, default: 0
       t.string :tier, limit: 1     
-      t.integer :member_fighter_ids, array:true, default:[]
+      
       t.timestamps
     end
   end

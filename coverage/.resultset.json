@@ -1,0 +1,114 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/mnt/c/code/smashy_bet/app/models/event.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/mnt/c/code/smashy_bet/app/models/fighter.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/mnt/c/code/smashy_bet/app/models/match.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/mnt/c/code/smashy_bet/app/models/spirit.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/mnt/c/code/smashy_bet/app/models/team.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/mnt/c/code/smashy_bet/app/controllers/api/v1/fighters_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/mnt/c/code/smashy_bet/app/controllers/application_controller.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/mnt/c/code/smashy_bet/app/models/fighter_match.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/mnt/c/code/smashy_bet/app/models/fighter_team.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/mnt/c/code/smashy_bet/app/serializers/fighter_serializer.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      }
+    },
+    "timestamp": 1622390335
+  }
+}

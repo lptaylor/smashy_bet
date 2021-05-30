@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_17_010014) do
+ActiveRecord::Schema.define(version: 2021_05_30_032657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,12 +24,32 @@ ActiveRecord::Schema.define(version: 2021_05_17_010014) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "fighter_matches", id: false, force: :cascade do |t|
+    t.bigint "fighter_id"
+    t.bigint "match_id"
+    t.integer "user_slot"
+    t.string "user_controller"
+    t.integer "user_lvl"
+    t.string "user_team", limit: 10
+    t.string "user_bet_side", limit: 10
+    t.boolean "won"
+    t.index ["fighter_id"], name: "index_fighter_matches_on_fighter_id"
+    t.index ["match_id"], name: "index_fighter_matches_on_match_id"
+  end
+
+  create_table "fighter_teams", id: false, force: :cascade do |t|
+    t.bigint "fighter_id"
+    t.bigint "team_id"
+    t.boolean "currently_active", default: true
+    t.index ["fighter_id"], name: "index_fighter_teams_on_fighter_id"
+    t.index ["team_id"], name: "index_fighter_teams_on_team_id"
+  end
+
   create_table "fighters", force: :cascade do |t|
     t.string "name", limit: 100
     t.string "character", limit: 100
     t.integer "wins", default: 0
     t.integer "losses", default: 0
-    t.integer "matches", default: 0
     t.integer "points_bet_on", default: 0
     t.integer "points_won", default: 0
     t.integer "points_lost", default: 0
@@ -48,62 +68,11 @@ ActiveRecord::Schema.define(version: 2021_05_17_010014) do
   create_table "matches", force: :cascade do |t|
     t.datetime "date"
     t.string "vod_link"
-    t.string "description", limit: 100
+    t.string "description"
     t.string "stage", limit: 100
-    t.string "type", limit: 100
-    t.string "winner", limit: 10
+    t.string "type_of_match"
     t.integer "pts_bet_l"
     t.integer "pts_bet_r"
-    t.integer "user_1_fighter_id"
-    t.string "user_1_controller", limit: 5
-    t.integer "user_1_lvl"
-    t.string "user_1_team", limit: 10
-    t.string "user_1_bet", limit: 10
-    t.integer "user_2_fighter_id"
-    t.string "user_2_controller", limit: 5
-    t.integer "user_2_lvl"
-    t.string "user_2_team", limit: 10
-    t.string "user_2_bet", limit: 10
-    t.integer "user_3_fighter_id"
-    t.string "user_3_controller", limit: 5
-    t.integer "user_3_lvl"
-    t.string "user_3_team", limit: 10
-    t.string "user_3_bet", limit: 10
-    t.integer "user_4_fighter_id"
-    t.string "user_4_controller", limit: 5
-    t.integer "user_4_lvl"
-    t.string "user_4_team", limit: 10
-    t.string "user_4_bet", limit: 10
-    t.integer "user_5_fighter_id"
-    t.string "user_5_controller", limit: 5
-    t.integer "user_5_lvl"
-    t.string "user_5_team", limit: 10
-    t.string "user_5_bet", limit: 10
-    t.integer "user_6_fighter_id"
-    t.string "user_6_controller", limit: 5
-    t.integer "user_6_lvl"
-    t.string "user_6_team", limit: 10
-    t.string "user_6_bet", limit: 10
-    t.integer "user_7_fighter_id"
-    t.string "user_7_controller", limit: 5
-    t.integer "user_7_lvl"
-    t.string "user_7_team", limit: 10
-    t.string "user_7_bet", limit: 10
-    t.integer "user_8_fighter_id"
-    t.string "user_8_controller", limit: 5
-    t.integer "user_8_lvl"
-    t.string "user_8_team", limit: 10
-    t.string "user_8_bet", limit: 10
-    t.integer "user_9_fighter_id"
-    t.string "user_9_controller", limit: 5
-    t.integer "user_9_lvl"
-    t.string "user_9_team", limit: 10
-    t.string "user_9_bet", limit: 10
-    t.integer "user_10_fighter_id"
-    t.string "user_10_controller", limit: 5
-    t.integer "user_10_lvl"
-    t.string "user_10_team", limit: 10
-    t.string "user_10_bet", limit: 10
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -128,15 +97,12 @@ ActiveRecord::Schema.define(version: 2021_05_17_010014) do
     t.integer "pts_won", default: 0
     t.integer "pts_lost", default: 0
     t.string "tier", limit: 1
-    t.integer "member_fighter_ids", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "widgets", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
+  add_foreign_key "fighter_matches", "fighters"
+  add_foreign_key "fighter_matches", "matches"
+  add_foreign_key "fighter_teams", "fighters"
+  add_foreign_key "fighter_teams", "teams"
 end
