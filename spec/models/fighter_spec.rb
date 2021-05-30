@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Fighter, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+    it 'exists' do
+      fighter = Fighter.new(name: "testname", character: "testchar", tier: 'C')
+
+      expect(fighter).to be_a(Fighter)
+    end
 end

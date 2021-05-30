@@ -5,7 +5,6 @@ class CreateFighters < ActiveRecord::Migration[6.1]
       t.string :character, limit: 100
       t.integer :wins, default: 0
       t.integer :losses, default: 0
-      t.integer :matches, default: 0
       t.integer :points_bet_on, default: 0
       t.integer :points_won, default: 0
       t.integer :points_lost, default: 0
